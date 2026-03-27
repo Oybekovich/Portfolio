@@ -25,6 +25,7 @@ export interface Translation {
   };
   projects: {
     title: string;
+    view: string;
     comingSoon: string;
   };
   certificates: {
@@ -66,6 +67,7 @@ export const translations: Record<Language, Translation> = {
     },
     projects: {
       title: 'My Projects',
+      view: 'View Project',
       comingSoon: 'Exciting projects are on the way! Stay tuned.',
     },
     certificates: {
@@ -105,6 +107,7 @@ export const translations: Record<Language, Translation> = {
     },
     projects: {
       title: 'Mening loyihalarim',
+      view: 'Loyihani ko\'rish',
       comingSoon: 'Yangi loyihalar tez orada qo\'shiladi! Kuzatib boring.',
     },
     certificates: {
@@ -144,6 +147,7 @@ export const translations: Record<Language, Translation> = {
     },
     projects: {
       title: 'Мои проекты',
+      view: 'Посмотреть проект',
       comingSoon: 'Скоро здесь появятся интересные проекты! Следите за обновлениями.',
     },
     certificates: {

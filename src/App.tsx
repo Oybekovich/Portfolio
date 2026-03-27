@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import emailjs from '@emailjs/browser';
 import { 
   Github, 
   Send, 
@@ -15,7 +16,9 @@ import {
   Terminal,
   ChevronRight,
   Award,
-  FileCheck
+  FileCheck,
+  Globe,
+  Gamepad2
 } from 'lucide-react';
 import { cn } from './lib/utils';
 import { translations, type Language, type Theme } from './types';
@@ -23,11 +26,46 @@ import { translations, type Language, type Theme } from './types';
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [theme, setTheme] = useState<Theme>('dark');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const formRef = useRef<HTMLFormElement>(null);
   const t = translations[lang];
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
   }, [theme]);
+
+  useEffect(() => {
+    emailjs.init('NtGzOmfiDTGdwxZ5J');
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const result = await emailjs.sendForm(
+        'service_r4d3nxy',
+        'template_mlfgyzq',
+        formRef.current,
+        'NtGzOmfiDTGdwxZ5J'
+      );
+      console.log('EmailJS Success:', result.text);
+      setSubmitStatus('success');
+      formRef.current.reset();
+    } catch (error: any) {
+      console.error('EmailJS Error:', error);
+      const errorMessage = error?.text || error?.message || 'Unknown error';
+      setSubmitStatus('error');
+      alert(`EmailJS Error: ${errorMessage}`);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
+  };
 
   const skills = [
     { name: 'HTML5', icon: <Layout className="w-5 h-5" />, level: '95%' },
@@ -45,6 +83,31 @@ export default function App() {
     { name: 'HTML and CSS in depth', url: 'https://www.coursera.org/account/accomplishments/certificate/PKVYRTGNWOW0', issuer: 'Meta' },
     { name: 'React Basics', url: 'https://www.coursera.org/account/accomplishments/certificate/D2DP196LC54G', issuer: 'Meta' },
     { name: 'Advanced React', url: 'https://www.coursera.org/account/accomplishments/certificate/9ATY544EWG9V', issuer: 'Meta' },
+  ];
+
+  const projects = [
+    {
+      title: 'Nature Conservation',
+      description: {
+        en: 'A beautiful landing page focused on nature preservation and environmental awareness.',
+        uz: 'Tabiatni asrash va ekologik xabardorlikka bag\'ishlangan chiroyli landing page.',
+        ru: 'Красивый лендинг, посвященный сохранению природы и экологической осведомленности.'
+      },
+      url: 'https://nature-conservation.vercel.app/',
+      icon: <Globe className="w-6 h-6" />,
+      tags: ['HTML', 'CSS', 'Responsive']
+    },
+    {
+      title: 'Astro Gaming',
+      description: {
+        en: 'An immersive gaming project with modern UI elements and dynamic layouts.',
+        uz: 'Zamonaviy UI elementlari va dinamik maketlarga ega bo\'lgan immersiv o\'yin loyihasi.',
+        ru: 'Иммерсивный игровой проект с современными элементами интерфейса и динамическими макетами.'
+      },
+      url: 'https://astro-gaming-project.vercel.app/',
+      icon: <Gamepad2 className="w-6 h-6" />,
+      tags: ['HTML', 'Tailwind CSS', 'JS']
+    }
   ];
 
   const socialLinks = [
@@ -319,15 +382,67 @@ export default function App() {
             <span className="w-12 h-1 bg-orange-500" />
             {t.projects.title}
           </h2>
-          <div className="p-12 rounded-3xl border border-dashed border-white/20 flex flex-col items-center justify-center text-center">
-            <div className="w-20 h-20 rounded-full bg-orange-500/10 flex items-center justify-center mb-6">
-              <Terminal className="w-10 h-10 text-orange-500" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2">{t.projects.comingSoon}</h3>
-            <p className="opacity-60 max-w-sm">
-              I'm currently working on several projects as part of my learning journey at Al-Xorazmiy vorislari.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative p-8 rounded-3xl border border-white/10 bg-zinc-900/40 backdrop-blur-sm hover:border-orange-500/50 transition-all overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                  {project.icon}
+                </div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-3 rounded-2xl bg-orange-500/10 text-orange-500">
+                      {project.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold">{project.title}</h3>
+                  </div>
+                  
+                  <p className="opacity-60 mb-8 leading-relaxed">
+                    {project.description[lang]}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <a 
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-all group/btn"
+                  >
+                    {t.projects.view}
+                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </a>
+                </div>
+                
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
           </div>
+          
+          {projects.length === 0 && (
+            <div className="p-12 rounded-3xl border border-dashed border-white/20 flex flex-col items-center justify-center text-center">
+              <div className="w-20 h-20 rounded-full bg-orange-500/10 flex items-center justify-center mb-6">
+                <Terminal className="w-10 h-10 text-orange-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{t.projects.comingSoon}</h3>
+              <p className="opacity-60 max-w-sm">
+                I'm currently working on several projects as part of my learning journey at Al-Xorazmiy vorislari.
+              </p>
+            </div>
+          )}
         </div>
       </motion.section>
 
@@ -378,8 +493,8 @@ export default function App() {
             </div>
 
             <form 
-              action="https://formspree.io/f/alobek808@gmail.com" 
-              method="POST"
+              ref={formRef}
+              onSubmit={handleSubmit}
               className="space-y-4"
             >
               <div className="grid grid-cols-2 gap-4">
@@ -413,11 +528,38 @@ export default function App() {
               </div>
               <button 
                 type="submit"
-                className="w-full py-4 bg-orange-500 text-white rounded-xl font-semibold hover:bg-orange-600 transition-all flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className={cn(
+                  "w-full py-4 rounded-xl font-semibold transition-all flex items-center justify-center gap-2",
+                  isSubmitting ? "bg-orange-500/50 cursor-not-allowed" : "bg-orange-500 hover:bg-orange-600 text-white"
+                )}
               >
-                {t.contact.send}
+                {isSubmitting ? 'Sending...' : t.contact.send}
                 <ChevronRight className="w-4 h-4" />
               </button>
+              
+              <AnimatePresence>
+                {submitStatus === 'success' && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-green-500 text-sm font-medium text-center"
+                  >
+                    {t.contact.success}
+                  </motion.p>
+                )}
+                {submitStatus === 'error' && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="text-red-500 text-sm font-medium text-center"
+                  >
+                    Something went wrong. Please try again.
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </form>
           </div>
         </div>
