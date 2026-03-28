@@ -1,13 +1,436 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimboyev A'lobek Oybekovich | Frontend Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="dark" id="body">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                OYBEKOVICH<span class="logo-dot">.</span>
+            </div>
 
+            <div class="nav-links">
+                <a href="#about" class="nav-link lang-text" data-en="About" data-uz="Men haqimda" data-ru="Обо мне">About</a>
+                <a href="#skills" class="nav-link lang-text" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a>
+                <a href="#certificates" class="nav-link lang-text" data-en="Certificates" data-uz="Sertifikatlar" data-ru="Сертификаты">Certificates</a>
+                <a href="#projects" class="nav-link lang-text" data-en="Projects" data-uz="Loyihalar" data-ru="Проекты">Projects</a>
+                <a href="#contact" class="nav-link lang-text" data-en="Contact" data-uz="Aloqa" data-ru="Контакт">Contact</a>
+            </div>
+
+            <div class="nav-controls">
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">en</button>
+                    <button class="lang-btn" data-lang="uz">uz</button>
+                    <button class="lang-btn" data-lang="ru">ru</button>
+                    <div class="lang-pill" id="lang-pill"></div>
+                </div>
+
+                <!-- Theme Switcher -->
+                <button class="theme-toggle" id="theme-toggle">
+                    <i data-lucide="sun" class="icon-sun"></i>
+                    <i data-lucide="moon" class="icon-moon" style="display: none;"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu Toggle (Optional but good for responsive) -->
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Links -->
+        <div class="mobile-nav-links" id="mobile-nav-links">
+            <a href="#about" class="nav-link lang-text" data-en="About" data-uz="Men haqimda" data-ru="Обо мне">About</a>
+            <a href="#skills" class="nav-link lang-text" data-en="Skills" data-uz="Ko'nikmalar" data-ru="Навыки">Skills</a>
+            <a href="#certificates" class="nav-link lang-text" data-en="Certificates" data-uz="Sertifikatlar" data-ru="Сертификаты">Certificates</a>
+            <a href="#projects" class="nav-link lang-text" data-en="Projects" data-uz="Loyihalar" data-ru="Проекты">Projects</a>
+            <a href="#contact" class="nav-link lang-text" data-en="Contact" data-uz="Aloqa" data-ru="Контакт">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="hero-section fade-in-up">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="hero-greeting lang-text uppercase-mono" data-en="Hi, I'm" data-uz="Salom, men" data-ru="Привет, я">Hi, I'm</span>
+                <h1 class="hero-title">
+                    Olimboyev <br />
+                    A'lobek <br />
+                    <span class="text-orange">Oybekovich</span>
+                </h1>
+                <p class="hero-desc lang-text" 
+                    data-en='I have been studying at the "Al-Xorazmiy vorislari" project for 2 years, focusing on modern web technologies.'
+                    data-uz='"Al-Xorazmiy vorislari" loyihasida 2 yildan beri zamonaviy veb-texnologiyalarni o&apos;rganib kelmoqdaman.'
+                    data-ru='Я учусь в проекте "Al-Xorazmiy vorislari" уже 2 года, изучая современные веб-технологии.'>
+                    I have been studying at the "Al-Xorazmiy vorislari" project for 2 years, focusing on modern web technologies.
+                </p>
+                <p class="hero-desc-sub lang-text"
+                    data-en='I am A&apos;lobek Olimboyev, a passionate frontend developer in training. I love building clean, responsive, and user-friendly web interfaces. Studying at "Al-Xorazmiy vorislari" since 2024.'
+                    data-uz='Men Olimboyev A&apos;lobek Oybekovich, frontend dasturlashga qiziqqan va o&apos;rganayotgan yosh mutaxassisman. Toza va qulay interfeyslar yaratishni yaxshi ko&apos;raman. "Al-Xorazmiy vorislari" loyihasida 2024-yildan beri o&apos;qiyman.'
+                    data-ru='Я Олимбоев А&apos;лобек Ойбекович, увлеченный начинающий frontend-разработчик. Мне нравится создавать чистые и удобные веб-интерфейсы. Учусь в "Al-Xorazmiy vorislari" с 2024 года.'>
+                    I am A'lobek Olimboyev, a passionate frontend developer in training. I love building clean, responsive, and user-friendly web interfaces. Studying at "Al-Xorazmiy vorislari" since 2024.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary lang-text" 
+                       data-en="Get in Touch" data-uz="Bog'lanish" data-ru="Связаться">Get in Touch</a>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/Oybekovich" target="_blank" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </a>
+                        <a href="https://t.me/oybekovic1" target="_blank" class="social-icon"><i data-lucide="send"></i></a>
+                        <a href="https://www.instagram.com/xw.lvl" target="_blank" class="social-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="mailto:alobek808@gmail.com" target="_blank" class="social-icon"><i data-lucide="mail"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-wrapper">
+                <div class="hero-glow"></div>
+                <div class="hero-image-box">
+                    <i data-lucide="code-2" class="hero-bg-icon"></i>
+                    <div class="hero-status-card">
+                        <div class="status-header">
+                            <span class="status-label">STATUS</span>
+                            <div class="status-dot"></div>
+                        </div>
+                        <p class="status-text">Learning Frontend at Al-Xorazmiy vorislari</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-alt observe-section fade-in-up">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-line"></span>
+                <span class="lang-text" data-en="My Skills" data-uz="Mening ko'nikmalarim" data-ru="Мои навыки">My Skills</span>
+            </h2>
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i data-lucide="layout"></i></div>
+                        <span class="skill-name">HTML5</span>
+                    </div>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" data-width="95%"></div>
+                    </div>
+                </div>
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i data-lucide="palette"></i></div>
+                        <span class="skill-name">CSS3</span>
+                    </div>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" data-width="90%"></div>
+                    </div>
+                </div>
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i data-lucide="terminal"></i></div>
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" data-width="70%"></div>
+                    </div>
+                </div>
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i data-lucide="code-2"></i></div>
+                        <span class="skill-name">Tailwind CSS</span>
+                    </div>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" data-width="85%"></div>
+                    </div>
+                </div>
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i data-lucide="palette"></i></div>
+                        <span class="skill-name">SCSS / SASS</span>
+                    </div>
+                    <div class="skill-bar-wrap">
+                        <div class="skill-bar" data-width="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="section observe-section fade-in-up">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-line"></span>
+                <span class="lang-text" data-en="Certificates" data-uz="Sertifikatlar" data-ru="Сертификаты">Certificates</span>
+            </h2>
+            <div class="certs-grid">
+                <!-- Cert 1 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">Meta Front-End Developer Specialization</h3>
+                        <a href="https://coursera.org/verify/specialization/CV4LJU8FZYXO" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 2 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">Introduction to Front-End Development</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/5ZNVQXPFEJGR" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 3 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">Programming with JavaScript</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/MRWTW2IWI571" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 4 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">Version Control</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/H3VT8X9QBKMK" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 5 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">HTML and CSS in depth</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/PKVYRTGNWOW0" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 6 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">React Basics</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/D2DP196LC54G" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Cert 7 -->
+                <div class="cert-card">
+                    <div class="cert-bg-icon"><i data-lucide="award"></i></div>
+                    <div class="cert-content">
+                        <div class="cert-header">
+                            <div class="cert-icon"><i data-lucide="file-check"></i></div>
+                            <span class="cert-issuer">Meta</span>
+                        </div>
+                        <h3 class="cert-name">Advanced React</h3>
+                        <a href="https://www.coursera.org/account/accomplishments/certificate/9ATY544EWG9V" target="_blank" class="cert-link">
+                            <span class="lang-text" data-en="View Certificate" data-uz="Sertifikatni ko'rish" data-ru="Посмотреть сертификат">View Certificate</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-alt observe-section fade-in-up">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-line"></span>
+                <span class="lang-text" data-en="My Projects" data-uz="Mening loyihalarim" data-ru="Мои проекты">My Projects</span>
+            </h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-bg-icon"><i data-lucide="globe"></i></div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon"><i data-lucide="globe"></i></div>
+                            <h3 class="project-title">Nature Conservation</h3>
+                        </div>
+                        <p class="project-desc lang-text"
+                           data-en="A beautiful landing page focused on nature preservation and environmental awareness."
+                           data-uz="Tabiatni asrash va ekologik xabardorlikka bag'ishlangan chiroyli landing page."
+                           data-ru="Красивый лендинг, посвященный сохранению природы и экологической осведомленности.">
+                            A beautiful landing page focused on nature preservation and environmental awareness.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <a href="https://nature-conservation.vercel.app/" target="_blank" class="btn btn-primary btn-sm project-link-btn">
+                            <span class="lang-text" data-en="View Project" data-uz="Loyihani ko'rish" data-ru="Посмотреть проект">View Project</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                    <div class="project-hover-glow"></div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-bg-icon"><i data-lucide="gamepad-2"></i></div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div class="project-icon"><i data-lucide="gamepad-2"></i></div>
+                            <h3 class="project-title">Astro Gaming</h3>
+                        </div>
+                        <p class="project-desc lang-text"
+                           data-en="An immersive gaming project with modern UI elements and dynamic layouts."
+                           data-uz="Zamonaviy UI elementlari va dinamik maketlarga ega bo'lgan immersiv o'yin loyihasi."
+                           data-ru="Иммерсивный игровой проект с современными элементами интерфейса и динамическими макетами.">
+                            An immersive gaming project with modern UI elements and dynamic layouts.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">Tailwind CSS</span>
+                            <span class="tag">JS</span>
+                        </div>
+                        <a href="https://astro-gaming-project.vercel.app/" target="_blank" class="btn btn-primary btn-sm project-link-btn">
+                            <span class="lang-text" data-en="View Project" data-uz="Loyihani ko'rish" data-ru="Посмотреть проект">View Project</span>
+                            <i data-lucide="external-link"></i>
+                        </a>
+                    </div>
+                    <div class="project-hover-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section observe-section fade-in-up">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2 class="contact-title lang-text" data-en="Contact Me" data-uz="Men bilan bog'lanish" data-ru="Связаться со мной">Contact Me</h2>
+                    <p class="contact-desc">
+                        Have a question or want to work together? Feel free to reach out through any of these platforms.
+                    </p>
+                    <div class="contact-methods">
+                        <a href="mailto:alobek808@gmail.com" class="contact-method-card">
+                            <div class="contact-method-icon txt-orange bg-orange-light"><i data-lucide="mail"></i></div>
+                            <div class="contact-method-text">
+                                <span class="method-label">Email</span>
+                                <span class="method-value">alobek808@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="https://t.me/oybekovic1" target="_blank" class="contact-method-card">
+                            <div class="contact-method-icon txt-blue bg-blue-light"><i data-lucide="send"></i></div>
+                            <div class="contact-method-text">
+                                <span class="method-label">Telegram</span>
+                                <span class="method-value">@oybekovic1</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="lang-text" data-en="Name" data-uz="Ism" data-ru="Имя">Name</label>
+                                <input type="text" name="name" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label class="lang-text" data-en="Email" data-uz="Email" data-ru="Email">Email</label>
+                                <input type="email" name="email" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lang-text" data-en="Message" data-uz="Xabar" data-ru="Сообщение">Message</label>
+                            <textarea name="message" rows="4" required class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+                            <span class="btn-text lang-text" data-en="Send Message" data-uz="Xabarni yuborish" data-ru="Отправить сообщение">Send Message</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                        
+                        <div id="form-message" class="form-message hidden">
+                            <!-- Success or error message will be injected here -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p class="footer-copyright">
+                © <span id="year">2026</span> Olimboyev A'lobek Oybekovich. All rights reserved.
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/Oybekovich" target="_blank">GitHub</a>
+                <a href="https://t.me/oybekovic1" target="_blank">Telegram</a>
+                <a href="https://www.instagram.com/xw.lvl" target="_blank">Instagram</a>
+                <a href="mailto:alobek808@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
