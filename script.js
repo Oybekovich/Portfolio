@@ -190,3 +190,28 @@ contactForm.addEventListener('submit', async (e) => {
         }, 5000);
     }
 });
+
+// --- Hero 3D Tilt Effect ---
+const heroWrapper = document.querySelector('.hero-image-wrapper');
+const heroBox = document.querySelector('.hero-tilt-wrapper');
+
+if (heroWrapper && heroBox) {
+    heroWrapper.addEventListener('mousemove', (e) => {
+        const rect = heroWrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Smoother, slightly more dynamic tilt mapping
+        const rotateX = ((y - centerY) / centerY) * -20;
+        const rotateY = ((x - centerX) / centerX) * 20;
+        
+        heroBox.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    heroWrapper.addEventListener('mouseleave', () => {
+        heroBox.style.transform = `rotateX(0deg) rotateY(0deg)`;
+    });
+}
