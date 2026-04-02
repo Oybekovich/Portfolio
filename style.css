@@ -118,7 +118,7 @@ body {
     gap: 2rem;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1024px) {
     .nav-links {
         display: flex;
     }
@@ -216,6 +216,14 @@ body {
     height: 1.25rem;
 }
 
+body.dark .icon-moon {
+    display: none !important;
+}
+
+body:not(.dark) .icon-sun {
+    display: none !important;
+}
+
 .mobile-menu-btn {
     display: flex;
     background: none;
@@ -225,7 +233,7 @@ body {
     cursor: pointer;
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1024px) {
     .mobile-menu-btn {
         display: none;
     }
@@ -739,18 +747,18 @@ body:not(.dark) .skill-bar-wrap {
     gap: 1.5rem;
 }
 
-.certs-grid > .cert-card {
+.certs-grid>.cert-card {
     width: 100%;
 }
 
 @media(min-width: 768px) {
-    .certs-grid > .cert-card {
+    .certs-grid>.cert-card {
         width: calc(50% - 0.75rem);
     }
 }
 
 @media(min-width: 1024px) {
-    .certs-grid > .cert-card {
+    .certs-grid>.cert-card {
         width: calc(33.333% - 1rem);
     }
 }
@@ -772,7 +780,7 @@ body:not(.dark) .skill-bar-wrap {
 .cert-card:hover {
     border-color: rgba(249, 115, 22, 0.5);
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 5;
 }
 

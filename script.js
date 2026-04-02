@@ -1,29 +1,17 @@
 // --- Theme Management ---
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.getElementById('body');
-const iconSun = document.querySelector('.icon-sun');
-const iconMoon = document.querySelector('.icon-moon');
 
 // Initialize Theme
 const savedTheme = localStorage.getItem('theme') || 'dark';
 if (savedTheme === 'light') {
     body.classList.remove('dark');
-    iconSun.style.display = 'none';
-    iconMoon.style.display = 'block';
 }
 
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('dark');
     const isDark = body.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    
-    if (isDark) {
-        iconSun.style.display = 'block';
-        iconMoon.style.display = 'none';
-    } else {
-        iconSun.style.display = 'none';
-        iconMoon.style.display = 'block';
-    }
 });
 
 // --- Language Management ---
