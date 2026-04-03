@@ -880,13 +880,15 @@ body:not(.dark) .skill-bar-wrap {
 
 .project-card {
     position: relative;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 1.5rem;
     border: 1px solid var(--border-color);
     background-color: var(--card-bg);
     backdrop-filter: blur(4px);
     transition: var(--transition);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -899,7 +901,7 @@ body:not(.dark) .skill-bar-wrap {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 2rem;
+    padding: 1.5rem;
     opacity: 0.05;
     transition: all 0.4s ease;
 }
@@ -917,6 +919,9 @@ body:not(.dark) .skill-bar-wrap {
 .project-content {
     position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project-header {
@@ -940,15 +945,16 @@ body:not(.dark) .skill-bar-wrap {
 
 .project-desc {
     color: var(--text-muted);
-    margin-bottom: 2rem;
-    line-height: 1.625;
+    margin-bottom: 1rem;
+    line-height: 1.5;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    margin-top: auto;
 }
 
 .project-tags .tag {
@@ -965,6 +971,10 @@ body:not(.dark) .skill-bar-wrap {
 
 body:not(.dark) .project-tags .tag {
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.project-link-btn {
+    align-self: flex-start;
 }
 
 .project-link-btn i {
@@ -1204,4 +1214,215 @@ textarea.form-input {
 .fade-in-up.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ====================================================
+   APPLE WWDC 2025 LIQUID GLASS DESIGN SYSTEM UPDATE 
+   ==================================================== */
+
+/* FALLBACK BACKGROUND FOR OLD BROWSERS */
+.navbar, .project-card, .skill-card, .cert-card, .contact-method-card, 
+.contact-form, .btn {
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    
+    /* 1. LIQUID GLASS BASE EFFECT FOR CARDS & CONTAINERS */
+    .navbar, .project-card, .skill-card, .cert-card, .contact-method-card, 
+    .contact-form {
+        position: relative; /* Before pseudo-element uchun */
+        background: rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+        -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.45) !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.35) !important;
+        box-shadow: 
+            inset 0 1px 0 rgba(255,255,255,0.3),
+            inset 0 -1px 0 rgba(0,0,0,0.1),
+            0 8px 32px rgba(0,0,0,0.15),
+            0 2px 8px rgba(0,0,0,0.1);
+        overflow: hidden !important; /* Skill card hover fix */
+    }
+
+    /* Overrides va Maxsus Qoidalar */
+    .contact-form {
+        padding: 2rem !important;
+        border-radius: 1.5rem !important;
+    }
+
+    /* Dark Mode Glass Modifications */
+    body.dark .navbar, 
+    body.dark .project-card, 
+    body.dark .skill-card, 
+    body.dark .cert-card, 
+    body.dark .contact-method-card, 
+    body.dark .contact-form {
+        background: rgba(255, 255, 255, 0.05) !important;
+        /* Box shadow adjustment for dark mode contrast */
+        box-shadow: 
+            inset 0 1px 0 rgba(255,255,255,0.15),
+            inset 0 -1px 0 rgba(0,0,0,0.2),
+            0 8px 32px rgba(0,0,0,0.3),
+            0 2px 8px rgba(0,0,0,0.2);
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        border-top-color: rgba(255, 255, 255, 0.2) !important;
+        border-left-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Navbar Specifics */
+    .navbar {
+        position: fixed !important;
+        top: 0 !important;
+        width: 100% !important;
+        border-radius: 0 0 16px 16px !important;
+        border-top: none !important;
+    }
+
+    /* 4. SPECULAR HIGHLIGHT (Yuqori yorug'lik effektlari) */
+    .project-card::before, 
+    .skill-card::before, 
+    .cert-card::before, 
+    .contact-method-card::before, 
+    .contact-form::before,
+    .btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255,255,255,0.25) 0%,
+            rgba(255,255,255,0.05) 40%,
+            transparent 60%
+        );
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 0;
+    }
+    
+    body.dark .project-card::before, 
+    body.dark .skill-card::before, 
+    body.dark .cert-card::before, 
+    body.dark .contact-method-card::before, 
+    body.dark .contact-form::before,
+    body.dark .btn::before {
+        background: linear-gradient(
+            135deg,
+            rgba(255,255,255,0.1) 0%,
+            rgba(255,255,255,0.02) 40%,
+            transparent 60%
+        );
+    }
+    
+    /* Make content sit above the specular highlight */
+    .project-card > *, .skill-card > *, .cert-card > *, 
+    .contact-method-card > *, .contact-form > *, .btn > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* BUTTONS LIQUID GLASS */
+    .btn, .theme-toggle, .lang-switcher {
+        position: relative;
+        border-radius: 50px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(16px) saturate(180%) brightness(1.1) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
+        box-shadow: 
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 4px 12px rgba(0,0,0,0.1);
+        overflow: hidden !important;
+    }
+
+    body.dark .btn, 
+    body.dark .theme-toggle, 
+    body.dark .lang-switcher {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.15) !important;
+        border-top-color: rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 
+            inset 0 1px 0 rgba(255,255,255,0.2),
+            0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Primary buttons */
+    .btn-primary {
+        background: rgba(249, 115, 22, 0.7) !important; /* var(--accent) overlay */
+    }
+
+    /* FORM INPUTS */
+    .form-input {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        color: var(--text-color) !important;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05) !important;
+        transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2), inset 0 2px 4px rgba(0,0,0,0.05) !important;
+        outline: none;
+    }
+    
+    body.dark .form-input {
+        background: rgba(0, 0, 0, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* 6. SHIMMER ANIMATION HOVER EFFECT */
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) skewX(-15deg); }
+        100% { transform: translateX(200%) skewX(-15deg); }
+    }
+
+    .project-card:hover::after, 
+    .skill-card:hover::after, 
+    .cert-card:hover::after, 
+    .btn:hover::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(
+            90deg, 
+            transparent 0%, 
+            rgba(255,255,255,0.2) 50%, 
+            transparent 100%
+        );
+        transform: translateX(-100%) skewX(-15deg);
+        animation: shimmer 1.5s infinite;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    body.dark .project-card:hover::after, 
+    body.dark .skill-card:hover::after, 
+    body.dark .cert-card:hover::after, 
+    body.dark .btn:hover::after {
+        background: linear-gradient(
+            90deg, 
+            transparent 0%, 
+            rgba(255,255,255,0.1) 50%, 
+            transparent 100%
+        );
+    }
+}
+
+/* PERFORMANCE & MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+    @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+        .navbar, .project-card, .skill-card, .cert-card, .contact-method-card, 
+        .contact-form {
+            backdrop-filter: blur(10px) saturate(150%) brightness(1.05) !important;
+            -webkit-backdrop-filter: blur(10px) saturate(150%) brightness(1.05) !important;
+        }
+    }
 }
