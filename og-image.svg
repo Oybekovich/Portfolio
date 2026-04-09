@@ -1,0 +1,10 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="#09090B"/>
+<circle cx="930" cy="120" r="220" fill="#F97316" fill-opacity="0.14"/>
+<circle cx="180" cy="560" r="180" fill="#F97316" fill-opacity="0.10"/>
+<rect x="72" y="72" width="1056" height="486" rx="28" fill="#111113" stroke="#27272A" stroke-width="2"/>
+<text x="130" y="228" fill="#A1A1AA" font-family="Inter, Arial, sans-serif" font-size="36">Frontend Portfolio</text>
+<text x="130" y="308" fill="#FAFAFA" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="700">A'lobek Oybekovich</text>
+<text x="130" y="372" fill="#F97316" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">Open to opportunities</text>
+<text x="130" y="448" fill="#D4D4D8" font-family="Inter, Arial, sans-serif" font-size="30">Projects - Certificates - Contact</text>
+</svg>
