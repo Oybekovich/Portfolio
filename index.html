@@ -49,21 +49,22 @@
             <div class="nav-controls">
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
-                    <button class="lang-btn active" data-lang="en">en</button>
-                    <button class="lang-btn" data-lang="uz">uz</button>
-                    <button class="lang-btn" data-lang="ru">ru</button>
+                    <button type="button" class="lang-btn active" data-lang="en" aria-label="Switch language to English">en</button>
+                    <button type="button" class="lang-btn" data-lang="uz" aria-label="Switch language to Uzbek">uz</button>
+                    <button type="button" class="lang-btn" data-lang="ru" aria-label="Switch language to Russian">ru</button>
                     <div class="lang-pill" id="lang-pill"></div>
                 </div>
 
                 <!-- Theme Switcher -->
-                <button class="theme-toggle" id="theme-toggle">
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark and light theme">
                     <i data-lucide="sun" class="icon-sun"></i>
                     <i data-lucide="moon" class="icon-moon"></i>
                 </button>
             </div>
 
             <!-- Mobile Menu Toggle (Optional but good for responsive) -->
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
+            <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu"
+                aria-controls="mobile-nav-links" aria-expanded="false">
                 <i data-lucide="menu"></i>
             </button>
         </div>
@@ -82,6 +83,7 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section id="about" class="hero-section fade-in-up">
         <div class="container hero-container">
@@ -403,7 +405,9 @@
                         Have a question or want to work together? Feel free to reach out through any of these platforms.
                     </p>
                     <div class="contact-methods">
-                        <a href="mailto:alobek808@gmail.com" class="contact-method-card">
+                        <a href="mailto:alobek808@gmail.com?subject=Portfolio%20Contact"
+                            onclick="window.location.href='mailto:alobek808@gmail.com?subject=Portfolio%20Contact'; return false;"
+                            class="contact-method-card" aria-label="Send email to alobek808@gmail.com">
                             <div class="contact-method-icon txt-orange bg-orange-light"><i data-lucide="mail"></i></div>
                             <div class="contact-method-text">
                                 <span class="method-label">Email</span>
@@ -439,18 +443,18 @@
                     <form id="contact-form" class="contact-form">
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="lang-text" data-en="Name" data-uz="Ism" data-ru="Имя">Name</label>
-                                <input type="text" name="name" required class="form-input">
+                                <label for="contact-name" class="lang-text" data-en="Name" data-uz="Ism" data-ru="Имя">Name</label>
+                                <input id="contact-name" type="text" name="name" required class="form-input">
                             </div>
                             <div class="form-group">
-                                <label class="lang-text" data-en="Email" data-uz="Email" data-ru="Email">Email</label>
-                                <input type="email" name="email" required class="form-input">
+                                <label for="contact-email" class="lang-text" data-en="Email" data-uz="Email" data-ru="Email">Email</label>
+                                <input id="contact-email" type="email" name="email" required class="form-input">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="lang-text" data-en="Message" data-uz="Xabar"
+                            <label for="contact-message" class="lang-text" data-en="Message" data-uz="Xabar"
                                 data-ru="Сообщение">Message</label>
-                            <textarea name="message" rows="4" required class="form-input"></textarea>
+                            <textarea id="contact-message" name="message" rows="4" required class="form-input"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
                             <span class="btn-text lang-text" data-en="Send Message" data-uz="Xabarni yuborish"
@@ -483,6 +487,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -494,7 +499,8 @@
                 <a href="https://github.com/Oybekovich" target="_blank">GitHub</a>
                 <a href="https://t.me/oybekovic1" target="_blank">Telegram</a>
                 <a href="https://www.instagram.com/xw.lvl" target="_blank">Instagram</a>
-                <a href="mailto:alobek808@gmail.com">Email</a>
+                <a href="mailto:alobek808@gmail.com?subject=Portfolio%20Contact"
+                    onclick="window.location.href='mailto:alobek808@gmail.com?subject=Portfolio%20Contact'; return false;">Email</a>
             </div>
         </div>
     </footer>
@@ -502,7 +508,9 @@
     <script src="script.js"></script>
     <script>
         // Initialize Lucide Icons
-        lucide.createIcons();
+        if (window.lucide) {
+            lucide.createIcons();
+        }
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>

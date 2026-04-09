@@ -68,6 +68,7 @@ const mobileNav = document.getElementById('mobile-nav-links');
 
 mobileBtn.addEventListener('click', () => {
     mobileNav.classList.toggle('active');
+    mobileBtn.setAttribute('aria-expanded', mobileNav.classList.contains('active') ? 'true' : 'false');
 });
 
 // Close mobile menu on click
