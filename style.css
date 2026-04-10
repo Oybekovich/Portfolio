@@ -1294,6 +1294,15 @@ textarea.form-input {
     color: var(--text-color);
 }
 
+/* Debug hardening: ensure email targets stay clickable above visual effects */
+#contact-email-link,
+#footer-email-link {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto !important;
+    cursor: pointer;
+}
+
 /* Animations - Intersection Observer Classes */
 .fade-in-up {
     opacity: 0;

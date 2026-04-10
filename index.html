@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3">
     <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg?v=3">
-    <link rel="stylesheet" href="style.min.css">
+    <link rel="stylesheet" href="style.css?v=debug-f66520">
 </head>
 
 <body class="dark" id="body">
@@ -400,12 +400,16 @@
                 <div class="contact-info">
                     <h2 class="contact-title lang-text" data-en="Contact Me" data-uz="Men bilan bog'lanish"
                         data-ru="Связаться со мной">Contact Me</h2>
-                    <p class="contact-desc">
-                        Have a question or want to work together? Feel free to reach out through any of these platforms.
+                    <p class="contact-desc lang-text"
+                        data-en="Have a question or want to work together? Feel free to reach out through any of these platforms."
+                        data-uz="Savolingiz bormi yoki birga ishlamoqchimisiz? Quyidagi platformalardan istalgan biri orqali bemalol bog'laning."
+                        data-ru="Есть вопрос или хотите поработать вместе? Свяжитесь со мной через любую из платформ ниже.">
+                        Have a question or want to work together? Feel free to reach out through any of these
+                        platforms.
                     </p>
                     <div class="contact-methods">
-                        <a href="mailto:alobek808@gmail.com?subject=Portfolio%20Contact"
-                            onclick="window.location.href='mailto:alobek808@gmail.com?subject=Portfolio%20Contact'; return false;"
+                        <a id="contact-email-link"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=alobek808%40gmail.com&su=Portfolio%20Contact"
                             class="contact-method-card" aria-label="Send email to alobek808@gmail.com">
                             <div class="contact-method-icon txt-orange bg-orange-light"><i data-lucide="mail"></i></div>
                             <div class="contact-method-text">
@@ -498,8 +502,8 @@
                 <a href="https://github.com/Oybekovich" target="_blank">GitHub</a>
                 <a href="https://t.me/oybekovic1" target="_blank">Telegram</a>
                 <a href="https://www.instagram.com/xw.lvl" target="_blank">Instagram</a>
-                <a href="mailto:alobek808@gmail.com?subject=Portfolio%20Contact"
-                    onclick="window.location.href='mailto:alobek808@gmail.com?subject=Portfolio%20Contact'; return false;">Email</a>
+                <a id="footer-email-link"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=alobek808%40gmail.com&su=Portfolio%20Contact">Email</a>
             </div>
         </div>
     </footer>
