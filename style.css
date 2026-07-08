@@ -948,6 +948,13 @@ body:not(.dark) .skill-bar-wrap {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    /* Oxirgi card yolg'iz (toq son) qolsa — o'rtaga */
+    .projects-grid .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 1rem);
+        margin-inline: auto;
+    }
 }
 
 .project-card {
