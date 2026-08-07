@@ -95,9 +95,10 @@ const observer = new IntersectionObserver((entries) => {
                 const skillBars = document.querySelectorAll('.skill-bar');
                 skillBars.forEach(bar => {
                     bar.style.width = bar.dataset.width;
-                });
-            }
-            
+    });
+}
+
+
             observer.unobserve(entry.target);
         }
     });
@@ -203,5 +204,22 @@ if (heroWrapper && heroBox) {
     
     heroWrapper.addEventListener('mouseleave', () => {
         heroBox.style.transform = `rotateX(0deg) rotateY(0deg)`;
+    });
+}
+
+// --- Contact 3D Form Tilt ---
+const contactStage = document.querySelector('.contact-stage');
+const contactPanel = document.querySelector('.contact-form');
+
+if (contactStage && contactPanel && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    contactStage.addEventListener('mousemove', (e) => {
+        const rect = contactStage.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        contactPanel.style.transform = `rotateY(${x * -7 - 1}deg) rotateX(${y * -4}deg) translateZ(28px)`;
+    });
+
+    contactStage.addEventListener('mouseleave', () => {
+        contactPanel.style.transform = '';
     });
 }

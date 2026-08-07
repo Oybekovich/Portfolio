@@ -1695,3 +1695,34 @@ footer { border-top: 1px solid var(--border-color); background: #080a09; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Premium contact studio */
+.contact-stage { position: relative; overflow: hidden; isolation: isolate; background: #080a09; }
+.contact-stage::before, .contact-stage::after { content: ""; position: absolute; pointer-events: none; border: 1px solid rgba(183,243,74,.16); border-radius: 999px; transform: rotate(-18deg); z-index: -1; }
+.contact-stage::before { width: 38rem; height: 18rem; right: -10rem; top: 6rem; }
+.contact-stage::after { width: 28rem; height: 13rem; right: -4rem; top: 8.5rem; border-color: rgba(242,245,239,.08); }
+.contact-stage .container { perspective: 1400px; }
+.contact-grid { gap: 4rem !important; align-items: center !important; }
+.contact-info { position: relative; padding: 2.4rem 0 2.4rem 2.2rem; }
+.contact-info::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--accent), transparent); opacity: .7; }
+.contact-eyebrow { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; color: var(--accent); font: 700 .62rem/1 ui-monospace, SFMono-Regular, monospace; letter-spacing: .16em; }
+.contact-orbit-dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 .25rem rgba(183,243,74,.12), 0 0 1rem rgba(183,243,74,.65); }
+.contact-title { font-size: clamp(2.7rem, 5vw, 5.4rem) !important; line-height: .94 !important; letter-spacing: -.08em; max-width: 8ch; margin-bottom: 1.5rem !important; }
+.contact-desc { max-width: 27rem; line-height: 1.75; }
+.contact-methods { gap: .7rem !important; }
+.contact-method-card { position: relative; min-height: 4.5rem; padding: 1rem 1.1rem !important; border-radius: .8rem !important; transform: translateZ(0); transition: transform 240ms ease, border-color 240ms ease, background 240ms ease !important; }
+.contact-method-card::after { content: "↗"; position: absolute; right: 1rem; top: 1rem; color: var(--text-muted); font-size: .9rem; transition: color 200ms ease, transform 200ms ease; }
+.contact-method-card:hover { transform: translate3d(8px, -4px, 24px) !important; }
+.contact-method-card:hover::after { color: var(--accent); transform: translate(2px, -2px); }
+.contact-method-icon { background: rgba(183,243,74,.1) !important; color: var(--accent) !important; border: 1px solid rgba(183,243,74,.18); }
+.method-label { color: var(--accent); font: 700 .62rem/1 ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; }
+.method-value { font-size: .88rem; }
+.contact-form-wrapper { transform-style: preserve-3d; }
+.contact-form { position: relative; overflow: visible !important; padding: 2rem !important; border-radius: 1.25rem !important; background: #141a16 !important; box-shadow: 1.5rem 1.5rem 0 rgba(183,243,74,.1), 0 2rem 5rem rgba(0,0,0,.35) !important; transform: rotateY(-5deg) rotateX(2deg) translateZ(20px); transform-style: preserve-3d; transition: transform 260ms ease, box-shadow 260ms ease !important; }
+.contact-form::after { content: "CONTACT / 01"; position: absolute; right: 1.5rem; top: -1.8rem; color: var(--text-muted); font: .62rem ui-monospace, monospace; letter-spacing: .12em; }
+.contact-form:hover { transform: rotateY(-1deg) rotateX(0deg) translateZ(30px) translateY(-4px); box-shadow: 1rem 1rem 0 rgba(183,243,74,.16), 0 2rem 5rem rgba(0,0,0,.42) !important; }
+.contact-form .form-input { min-height: 3.3rem; padding: .9rem 1rem !important; border-radius: .55rem !important; background: #0d110e !important; }
+.contact-form textarea.form-input { min-height: 9rem; }
+.contact-form label { font: 700 .65rem ui-monospace, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+.submit-btn { min-height: 3.4rem; justify-content: space-between; }
+@media (max-width: 767px) { .contact-stage::before { right: -18rem; top: 12rem; } .contact-info { padding: 1.5rem 0 1.5rem 1.25rem; } .contact-title { max-width: none; } .contact-form { transform: none; box-shadow: .65rem .65rem 0 rgba(183,243,74,.1) !important; } .contact-form:hover { transform: translateY(-3px); } .contact-form::after { top: -1.4rem; right: .5rem; } }
