@@ -75,6 +75,7 @@ mobileBtn.addEventListener('click', () => {
 document.querySelectorAll('.mobile-nav-links .nav-link').forEach(link => {
     link.addEventListener('click', () => {
         mobileNav.classList.remove('active');
+        mobileBtn.setAttribute('aria-expanded', 'false');
     });
 });
 
